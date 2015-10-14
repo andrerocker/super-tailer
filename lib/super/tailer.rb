@@ -4,13 +4,14 @@ module Super
   module Tailer
     extend self
 
-    def watch(current)
-      file = File.new(current)
+    def watch(content_file)
+      file = File.new(content_file)
       file.seek(0, File::SEEK_END)
 
       loop do
         begin
-          puts file.readline
+          yield
+          file.readline
         rescue EOFError
           file.seek(0, File::SEEK_CUR)
           sleep 0.1
