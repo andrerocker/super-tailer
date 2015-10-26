@@ -1,7 +1,7 @@
 require 'timers'
 
 module SuperTailer
-  class ExpireWhenIdle < SuperTailer::Tail
+  class ExpireWhenIdle < SuperTailer::Base
     def watch(timeout)
       watching = { enable: true }
       chrono = timer(timeout) { watching[:enable] = false }
