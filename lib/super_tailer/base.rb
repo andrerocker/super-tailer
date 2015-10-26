@@ -7,6 +7,7 @@ module SuperTailer
     def initialize(file, sleep_interval = 0.1, seek_start = File::SEEK_END)
       self.origin = initialize_origin(file)
       self.sleep_interval = sleep_interval
+      self.seek_start = seek_start
     end
 
     private
